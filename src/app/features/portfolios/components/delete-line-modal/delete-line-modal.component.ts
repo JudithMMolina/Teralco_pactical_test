@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { finalize, take } from 'rxjs/operators';
 
 import { PortfolioLineService } from 'src/app/core/services/portfolio-line.service';
-import { PortfolioLine } from '../../models/portfolio-lines.model';
+import { PortfolioLineWithCoin } from '../../../../core/models/portfolio-line-with-coin.model';
 
 @Component({
   selector: 'app-delete-line-modal',
@@ -14,7 +14,7 @@ export class DeleteLineModalComponent {
   /**
    * Portfolio line to delete.
    */
-  @Input() line: PortfolioLine | undefined;
+  @Input() line: PortfolioLineWithCoin | undefined;
 
   /**
    * Flag indicating if a portfolio line is being deleting.

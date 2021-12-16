@@ -7,7 +7,7 @@ import { finalize, take } from 'rxjs/operators';
 import { Currency } from 'src/app/core/models/currency.model';
 import { CurrencyService } from 'src/app/core/services/currency.service';
 import { PortfolioLineService } from 'src/app/core/services/portfolio-line.service';
-import { PortfolioLine } from '../../models/portfolio-lines.model';
+import { PortfolioLineWithCoin } from '../../../../core/models/portfolio-line-with-coin.model';
 
 @Component({
   selector: 'app-edit-portfolio-modal',
@@ -18,7 +18,7 @@ export class EditLineModalComponent implements OnInit {
   /**
    * Currency to edit.
    */
-  @Input() line: PortfolioLine | undefined;
+  @Input() line: PortfolioLineWithCoin | undefined;
 
   /**
    * Posible currencies.

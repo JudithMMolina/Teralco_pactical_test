@@ -1,4 +1,4 @@
-export interface Line {
+export interface PortfolioLine {
   id: number;
   portfolioId: number;
   coinId: number;

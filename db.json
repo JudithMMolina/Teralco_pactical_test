@@ -59,6 +59,11 @@
       "acronym": "TRA",
       "name": "Transversal coin",
       "id": 12
+    },
+    {
+      "acronym": "BTG",
+      "name": "BTG nuevo",
+      "id": 13
     }
   ],
   "portfolios": [
@@ -81,6 +86,10 @@
     {
       "name": "Prueba 3",
       "id": 6
+    },
+    {
+      "name": "Nombre de prueba",
+      "id": 7
     }
   ],
   "lines": [
@@ -161,6 +170,18 @@
       "coinId": "4",
       "amount": 56,
       "id": 13
+    },
+    {
+      "portfolioId": "7",
+      "coinId": "12",
+      "amount": 5.7,
+      "id": 14
+    },
+    {
+      "portfolioId": "3",
+      "coinId": "7",
+      "amount": 8,
+      "id": 15
     }
   ]
 }

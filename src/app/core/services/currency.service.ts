@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -49,5 +49,18 @@ export class CurrencyService {
    */
   public deleteCurrency(id: number): Observable<any> {
     return this.http.delete<any>(`http://localhost:3000/coins/${id}`);
+  }
+  
+  /**
+   * Gets currency values.
+   * @param currencies - Acronyms of the currencies from which we want to obtain their value.
+   * @param toCurrency - To the currency for which the value is to be known.
+   */
+  public getCurrencyValues(currencies: string[], toCurrency: string): Observable<any> {
+    var params = new HttpParams();
+    params = params.append('fsyms', currencies.join(','));
+    params = params.append('tsyms', toCurrency);
+
+    return this.http.get<any>('https://min-api.cryptocompare.com/data/pricemulti', { params });
   }
 }

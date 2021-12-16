@@ -10,12 +10,20 @@
 .line-card {
   border-radius: 0.25rem;
 
-  .line-currency {
+  .line-currency, .total-value {
     font-weight: 600;
   }
 
   .amount-label {
     font-size: 0.75rem;
+  }
+
+  .total-label {
+    font-size: 0.75rem;
+  }
+
+  .no-value {
+    color: #bbb;
   }
 }
 
