@@ -68,8 +68,8 @@ export class PortfolioDetailsComponent implements OnInit {
     this.viewModel$ = this.actions$.pipe(
       switchMap((portfolioId: number) => {
         return forkJoin([
-          this.portfolioService.getPorfolio(portfolioId),
-          this.portfolioLineService.getPorfolioLines(portfolioId),
+          this.portfolioService.getPortfolio(portfolioId),
+          this.portfolioLineService.getPortfolioLines(portfolioId),
         ]);
       }),
       map(([portfolio, lines]) => {

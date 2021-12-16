@@ -37,7 +37,7 @@ export class PortfoliosListComponent implements OnInit {
 
   ngOnInit(): void {
     this.portfolios$ = this.actions$.pipe(
-      switchMap(() => this.portfolioService.getPorfolios()),
+      switchMap(() => this.portfolioService.getPortfolios()),
     );
 
     this.actions.next(true);

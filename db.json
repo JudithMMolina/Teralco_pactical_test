@@ -51,19 +51,14 @@
       "name": "Ethereum classic"
     },
     {
-      "acronym": "P1",
-      "name": "Prueba",
+      "acronym": "BTC",
+      "name": "Bitcoin validate",
       "id": 11
     },
     {
-      "acronym": "P2",
-      "name": "Prueba 2",
+      "acronym": "TRA",
+      "name": "Transversal coin",
       "id": 12
-    },
-    {
-      "acronym": "P3",
-      "name": "Prueba 3",
-      "id": 13
     }
   ],
   "portfolios": [

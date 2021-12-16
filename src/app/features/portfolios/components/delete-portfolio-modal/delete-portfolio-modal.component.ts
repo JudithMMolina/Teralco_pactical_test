@@ -38,7 +38,7 @@ export class DeletePortfolioModalComponent {
     this.deleting = true;
 
     this.portfolioService
-      .deletePorfolio(id)
+      .deletePortfolio(id)
       .pipe(
         take(1),
         finalize(() => (this.deleting = false))

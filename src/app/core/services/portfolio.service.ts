@@ -14,23 +14,43 @@ export class PortfolioService {
    */
   constructor(private http: HttpClient) { }
 
-  public getPorfolios(): Observable<Portfolio[]> {
+  /**
+   * Gets the portfolios.
+   */
+  public getPortfolios(): Observable<Portfolio[]> {
     return this.http.get<Portfolio[]>('http://localhost:3000/portfolios?_embed=lines');
   }
 
-  public getPorfolio(id: number): Observable<Portfolio> {
+  /**
+   * Gets a portfolio.
+   * @param id - Portfolio identifier.
+   */
+  public getPortfolio(id: number): Observable<Portfolio> {
     return this.http.get<Portfolio>(`http://localhost:3000/portfolios/${id}`);
   }
 
-  public createPorfolio(portfolio: any): Observable<any> {
+  /**
+   * Creates a portfolio.
+   * @param portfolio - Data required for creation.
+   */
+  public createPortfolio(portfolio: any): Observable<any> {
     return this.http.post<any>('http://localhost:3000/portfolios', portfolio);
   }
 
-  public deletePorfolio(id: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:3000/portfolios/${id}`);
+  /**
+   * Edits the portfolio.
+   * @param id - Portfolio identifier.
+   * @param portfolio - Data required for edition.
+   */
+  public editPortfolio(id: number, portfolio: any): Observable<any> {
+    return this.http.put<any>(`http://localhost:3000/portfolios/${id}`, portfolio);
   }
 
-  public editPorfolio(id: number, portfolio: any): Observable<any> {
-    return this.http.put<any>(`http://localhost:3000/portfolios/${id}`, portfolio);
+  /**
+   * Deletes the portfolio.
+   * @param id - Portfolio identifier.
+   */
+  public deletePortfolio(id: number): Observable<any> {
+    return this.http.delete<any>(`http://localhost:3000/portfolios/${id}`);
   }
 }
