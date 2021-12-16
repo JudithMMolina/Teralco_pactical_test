@@ -1,27 +1,20 @@
 # CryptocurrencyPortfolioProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
+## Dependencias
 
-## Development server
+Este proyecto ha sido generado con:
+* [Node.js](https://nodejs.org/es/) v14.17.5
+* [npm](https://www.npmjs.com) v6.14.15
+* [Angular CLI](https://github.com/angular/angular-cli) v12.2.3.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Instrucciones de inicio
 
-## Code scaffolding
+Si es la primera vez que desea iniciar el proyecto, deberá generar la carpeta `node_modules` para instalar los paquetes y dependencias de nuestro proyecto listados en `package.json`. Para ello, debe ejecutar en la terminal el comando `npm ci`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Si se instala una nueva dependencia debe de volverse a ejecutar el anterior comando.
 
-## Build
+Antes de iniciar el proyecto, hay que levantar la API que crea `json-server` usando el archivo `db.json` o no tendremos disponibles los datos. Para ello, ejecute `json-server --watch db.json` desde la raiz del proyecto.
+Para comprobar que el servidor está disponible puede navegar a `http://localhost:3000`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Por último, ejecute `ng serve` para iniciar el proyecto y navega hasta `http://localhost:4200/`.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
