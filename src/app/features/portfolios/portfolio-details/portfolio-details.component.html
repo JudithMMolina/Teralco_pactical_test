@@ -1,0 +1,57 @@
+<ng-container *ngIf="viewModel$ | async as viewModel">
+  <div class="row mb-4">
+    <div class="col-12 col-sm mb-3 mb-0 min-w-fit">
+      <h4 class="mb-2">
+        {{ viewModel.portfolio.name }}
+      </h4>
+      <p class="mb-0 text-muted portfolio-id">Portfolio #{{ viewModel.portfolio.id }}</p>
+    </div>
+    <div class="col-12 col-sm text-sm-right max-w-fit">
+      <button type="button" class="btn btn-primary font-weight-bold" (click)="createLine(viewModel.portfolio)">Add line</button>
+    </div>
+  </div>
+
+  <section>
+    <div class="row mb-4">
+      <div class="col-12">
+        <p class="mb-0">Total value</p>
+        <p class="mb-0 portfolio-value-total">{{ viewModel.totalPortfolioValue }} {{ currencyToShow }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4" *ngFor="let line of viewModel.lines">
+        <div class="card list-group-item list-group-item-action clearfix line-card">
+          <p class="line-currency text-truncate mb-0">
+            {{ line.coin.acronym }} - {{ line.coin.name }}
+          </p>
+          <div>
+            <p class="mb-0 amount-label">{{ 'amount' | uppercase }}: {{ line.amount }}</p>
+          </div>
+          <div class="row align-items-center mt-3">
+            <div class="col">
+              <p class="mb-0 total-label">TOTAL <b>{{ currencyToShow }}</b></p>
+              <p class="mb-0 total-value" *ngIf="line.totalValue">{{ line.totalValue }}</p>
+              <p class="mb-0 no-value" *ngIf="!line.totalValue">Currently has no value</p>
+            </div>
+            <div class="col max-w-fit text-right action-buttons">
+              <button type="button" class="btn btn-outline-info btn-sm" (click)="editLine(viewModel.portfolio, line)">
+                <i class="fas fa-pen icon"></i>
+              </button>
+              <button type="button" class="btn btn-outline-danger btn-sm ml-2" (click)="deleteLine(viewModel.portfolio, line)">
+                <i class="far fa-trash-alt icon"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="viewModel.lines.length === 0">
+      <div class="col-12">
+        <p class="text-muted">
+          This portfolio has no lines
+        </p>
+      </div>
+    </div>
+  </section>
+</ng-container>

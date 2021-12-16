@@ -1,0 +1,17 @@
+<div class="modal-body pt-4" *ngIf="portfolio">
+  <p class="text-center delete-question">
+    Do you want to delete the portfolio <b>{{ portfolio?.name }}</b> ?
+  </p>
+  <div class="d-flex justify-content-between mt-4">
+    <button type="submit" class="btn btn-light min-w-btn mt-2" (click)="activeModal.dismiss()">Close</button>
+    <button type="submit" class="btn btn-danger min-w-btn mt-2" (click)="deletePortfolio(portfolio.id)">
+      <ng-container *ngIf="!deleting">
+        Delete
+      </ng-container>
+      <ng-container *ngIf="deleting">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Deleting...
+      </ng-container>
+    </button>
+  </div>
+</div>

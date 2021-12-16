@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  min-width: 380px;
+}
+
+.icon {
+  font-size: 0.8rem;
+}
+
+.no-link {
+  color: inherit;
+}
+
+.min-w-btn {
+  min-width: 7.5rem;
+}

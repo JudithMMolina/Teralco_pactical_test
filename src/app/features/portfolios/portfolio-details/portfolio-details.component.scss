@@ -1,0 +1,36 @@
+.portfolio-id {
+  font-size: 0.85rem;
+}
+
+.portfolio-value-total {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.line-card {
+  border-radius: 0.25rem;
+
+  .line-currency, .total-value {
+    font-weight: 600;
+  }
+
+  .amount-label {
+    font-size: 0.75rem;
+  }
+
+  .total-label {
+    font-size: 0.75rem;
+  }
+
+  .no-value {
+    color: #bbb;
+  }
+}
+
+.max-w-fit {
+  max-width: fit-content;
+}
+
+.min-w-fit {
+  min-width: fit-content;
+}

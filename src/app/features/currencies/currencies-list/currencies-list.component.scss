@@ -1,0 +1,15 @@
+$tableBorderColor: #dee2e6;
+
+.actions-column {
+  width: 10rem;
+  text-align: center;
+}
+
+thead, tbody {
+  border-left: 1px solid $tableBorderColor;
+  border-right: 1px solid $tableBorderColor;
+}
+
+tbody {
+  border-bottom: 1px solid $tableBorderColor;
+}

@@ -1,0 +1,18 @@
+<div class="modal-body pt-4" *ngIf="line">
+  <p class="text-center delete-question mb-0">
+    Do you want to delete the <b> {{ line.coin.acronym }} - {{ line.coin.name }}</b> line?
+  </p>
+  <p class="text-center delete-question mb-0">You have <b>{{ line.amount }}</b> units</p>
+  <div class="d-flex justify-content-between mt-4">
+    <button type="submit" class="btn btn-light min-w-btn mt-2" (click)="activeModal.dismiss()">Close</button>
+    <button type="submit" class="btn btn-danger min-w-btn mt-2" (click)="deleteLine(line.id)">
+      <ng-container *ngIf="!deleting">
+        Delete
+      </ng-container>
+      <ng-container *ngIf="deleting">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Deleting...
+      </ng-container>
+    </button>
+  </div>
+</div>

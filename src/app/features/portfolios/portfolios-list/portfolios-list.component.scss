@@ -1,0 +1,31 @@
+$portfolioIdColor: #aaa;
+
+.portfolio-card {
+  border-radius: 0.25rem;
+}
+
+.portfolio-header {
+  margin-bottom: 1.75rem;
+}
+
+.portfolio-name {
+  font-weight: 600;
+  text-overflow: ellipsis;
+}
+
+.portfolio-id {
+  color: $portfolioIdColor;
+}
+
+.total-lines {
+  font-size: 0.9rem;
+}
+
+.action-buttons {
+  width: fit-content;
+  position: relative;
+  float: right;
+  right: 0.5rem;
+  bottom: 2.75rem;
+  z-index: 2;
+}

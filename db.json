@@ -1,0 +1,209 @@
+{
+  "coins": [
+    {
+      "acronym": "BTC",
+      "name": "Bitcoin editado",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "acronym": "ETH",
+      "name": "Ethereum"
+    },
+    {
+      "id": 3,
+      "acronym": "LTC",
+      "name": "Litecoin"
+    },
+    {
+      "id": 4,
+      "acronym": "XMR",
+      "name": "Monero"
+    },
+    {
+      "id": 5,
+      "acronym": "REQ",
+      "name": "Request"
+    },
+    {
+      "id": 6,
+      "acronym": "BNK",
+      "name": "Bankera"
+    },
+    {
+      "id": 7,
+      "acronym": "IOT",
+      "name": "IOTA"
+    },
+    {
+      "id": 8,
+      "acronym": "XLM",
+      "name": "Lumen"
+    },
+    {
+      "id": 9,
+      "acronym": "BTG",
+      "name": "Bitcoin Gold"
+    },
+    {
+      "id": 10,
+      "acronym": "ETC",
+      "name": "Ethereum classic"
+    },
+    {
+      "acronym": "BTC",
+      "name": "Bitcoin validate",
+      "id": 11
+    },
+    {
+      "acronym": "TRA",
+      "name": "Transversal coin",
+      "id": 12
+    },
+    {
+      "acronym": "BTG",
+      "name": "BTG nuevo editado",
+      "id": 13
+    }
+  ],
+  "portfolios": [
+    {
+      "id": 1,
+      "name": "Portfolio 1 portfolio con nombre bastante mas largo"
+    },
+    {
+      "id": 2,
+      "name": "Portfolio 2 portfolio con nombre bastante mas largo portfolio con nombre bastante mas largo"
+    },
+    {
+      "id": 3,
+      "name": "Portfolio 3"
+    },
+    {
+      "name": "Portfolio de prueba",
+      "id": 4
+    },
+    {
+      "name": "Prueba 3",
+      "id": 6
+    },
+    {
+      "name": "Nombre de prueba",
+      "id": 7
+    },
+    {
+      "name": "Portfolio 4 - editado",
+      "id": 8
+    }
+  ],
+  "lines": [
+    {
+      "id": 1,
+      "portfolioId": 1,
+      "coinId": 1,
+      "amount": 1.5
+    },
+    {
+      "id": 2,
+      "portfolioId": 1,
+      "coinId": 6,
+      "amount": 20.3
+    },
+    {
+      "id": 3,
+      "portfolioId": 1,
+      "coinId": 8,
+      "amount": 9.2
+    },
+    {
+      "id": 4,
+      "portfolioId": 2,
+      "coinId": 2,
+      "amount": 7.4
+    },
+    {
+      "id": 5,
+      "portfolioId": 2,
+      "coinId": 3,
+      "amount": 5
+    },
+    {
+      "id": 6,
+      "portfolioId": 2,
+      "coinId": 7,
+      "amount": 4.8
+    },
+    {
+      "id": 7,
+      "portfolioId": 3,
+      "coinId": 5,
+      "amount": 6
+    },
+    {
+      "id": 8,
+      "portfolioId": 3,
+      "coinId": 9,
+      "amount": 0.2
+    },
+    {
+      "id": 9,
+      "portfolioId": 3,
+      "coinId": 10,
+      "amount": 10
+    },
+    {
+      "portfolioId": 3,
+      "coinId": 9,
+      "amount": 2.2,
+      "id": 10
+    },
+    {
+      "portfolioId": 3,
+      "coinId": 10,
+      "amount": 5,
+      "id": 11
+    },
+    {
+      "portfolioId": 2,
+      "coinId": 10,
+      "amount": 0.15,
+      "id": 12
+    },
+    {
+      "portfolioId": 6,
+      "coinId": 4,
+      "amount": 56,
+      "id": 13
+    },
+    {
+      "portfolioId": 7,
+      "coinId": 12,
+      "amount": 5.7,
+      "id": 14
+    },
+    {
+      "portfolioId": 3,
+      "coinId": 7,
+      "amount": 8,
+      "id": 15
+    },
+    {
+      "portfolioId": "7",
+      "coinId": "3",
+      "amount": 5,
+      "id": 16
+    },
+    {
+      "portfolioId": "7",
+      "coinId": "5",
+      "amount": 8,
+      "id": 17
+    },
+    {
+      "portfolioId": "7",
+      "coinId": "5",
+      "amount": 9,
+      "id": 18
+    }
+  ]
+}
