@@ -3,9 +3,6 @@
     <div class="col-12 col-sm mb-3 mb-0 min-w-fit">
       <h4 class="mb-2">
         {{ viewModel.portfolio.name }}
-        <!-- <button type="button" class="btn btn-link pb-2">
-          <i class="fas fa-pen icon"></i>
-        </button> -->
       </h4>
       <p class="mb-0 text-muted portfolio-id">Portfolio #{{ viewModel.portfolio.id }}</p>
     </div>
@@ -15,6 +12,12 @@
   </div>
 
   <section>
+    <div class="row mb-4">
+      <div class="col-12">
+        <p class="mb-0">Total value</p>
+        <p class="mb-0 portfolio-value-total">{{ viewModel.totalPortfolioValue }} {{ currencyToShow }}</p>
+      </div>
+    </div>
     <div class="row">
       <div class="col-12 col-md-6 mb-4" *ngFor="let line of viewModel.lines">
         <div class="card list-group-item list-group-item-action clearfix line-card">
@@ -26,7 +29,7 @@
           </div>
           <div class="row align-items-center mt-3">
             <div class="col">
-              <p class="mb-0 total-label">TOTAL {{ currencyToShow }}</p>
+              <p class="mb-0 total-label">TOTAL <b>{{ currencyToShow }}</b></p>
               <p class="mb-0 total-value" *ngIf="line.totalValue">{{ line.totalValue }}</p>
               <p class="mb-0 no-value" *ngIf="!line.totalValue">Currently has no value</p>
             </div>

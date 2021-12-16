@@ -2,7 +2,7 @@
   "coins": [
     {
       "acronym": "BTC",
-      "name": "Bitcoin",
+      "name": "Bitcoin editado",
       "id": 1
     },
     {
@@ -148,40 +148,58 @@
       "amount": 10
     },
     {
-      "portfolioId": "3",
-      "coinId": "9",
+      "portfolioId": 3,
+      "coinId": 9,
       "amount": 2.2,
       "id": 10
     },
     {
-      "portfolioId": "3",
-      "coinId": "10",
+      "portfolioId": 3,
+      "coinId": 10,
       "amount": 5,
       "id": 11
     },
     {
-      "portfolioId": "2",
-      "coinId": "10",
+      "portfolioId": 2,
+      "coinId": 10,
       "amount": 0.15,
       "id": 12
     },
     {
-      "portfolioId": "6",
-      "coinId": "4",
+      "portfolioId": 6,
+      "coinId": 4,
       "amount": 56,
       "id": 13
     },
     {
-      "portfolioId": "7",
-      "coinId": "12",
+      "portfolioId": 7,
+      "coinId": 12,
       "amount": 5.7,
       "id": 14
     },
     {
-      "portfolioId": "3",
-      "coinId": "7",
+      "portfolioId": 3,
+      "coinId": 7,
       "amount": 8,
       "id": 15
+    },
+    {
+      "portfolioId": "7",
+      "coinId": "3",
+      "amount": 5,
+      "id": 16
+    },
+    {
+      "portfolioId": "7",
+      "coinId": "5",
+      "amount": 8,
+      "id": 17
+    },
+    {
+      "portfolioId": "7",
+      "coinId": "5",
+      "amount": 9,
+      "id": 18
     }
   ]
 }

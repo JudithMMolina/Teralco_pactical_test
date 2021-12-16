@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { PortfolioLineWithCoin } from 'src/app/core/models/portfolio-line-with-coin.model';
+import { PortfolioLineRequest } from '../models/portfolio-line-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class PortfolioLineService {
    * @param line - Data required for creation.
    * @returns 
    */
-  public createLine(portfolioId: number, line: any): Observable<any> {
+  public createLine(portfolioId: number, line: PortfolioLineRequest): Observable<any> {
     return this.http.post<any>(`http://localhost:3000/portfolios/${portfolioId}/lines`, line);
   }
 
@@ -38,7 +39,7 @@ export class PortfolioLineService {
    * @param line - Data required for edition.
    * @returns 
    */
-  public editLine(lineId: number, line: any): Observable<any> {
+  public editLine(lineId: number, line: PortfolioLineRequest): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/lines/${lineId}`, line);
   }
 

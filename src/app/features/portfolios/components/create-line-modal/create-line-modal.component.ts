@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { finalize, take } from 'rxjs/operators';
+import { PortfolioLineRequest } from 'src/app/core/models/portfolio-line-request.model';
 
 import { Currency } from 'src/app/core/models/currency.model';
 import { Portfolio } from 'src/app/core/models/portfolio.model';
@@ -63,7 +64,8 @@ export class CreateLineModalComponent implements OnInit {
    */
   createLine(portfolioId: number, formValues: any) {
     this.creating = true;
-    const line = {
+
+    const line: PortfolioLineRequest = {
       portfolioId,
       coinId: formValues.currency,
       amount: formValues.amount,

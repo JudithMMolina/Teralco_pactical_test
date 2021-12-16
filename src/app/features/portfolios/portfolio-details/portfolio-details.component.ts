@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { forkJoin, noop, Observable, of, ReplaySubject } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { Portfolio } from 'src/app/core/models/portfolio.model';
 import { PortfolioLineService } from 'src/app/core/services/portfolio-line.service';
@@ -13,11 +13,11 @@ import { EditLineModalComponent } from '../components/edit-line-modal/edit-line-
 import { PortfolioLineWithCoin } from '../../../core/models/portfolio-line-with-coin.model';
 import { CoinWithValue, PortfolioLineData } from './portfolio-line-data';
 import { CurrencyService } from 'src/app/core/services/currency.service';
-import { PortfolioLine } from 'src/app/core/models/portfolio-line.model';
 
 export interface ViewModel {
   portfolio: Portfolio;
   lines: PortfolioLineData[];
+  totalPortfolioValue: number;
 }
 
 @Component({
@@ -97,31 +97,10 @@ export class PortfolioDetailsComponent implements OnInit {
         return <ViewModel>{
           portfolio,
           lines: linesWithValue,
+          totalPortfolioValue: this.calculatePortfolioValue(linesWithValue),
         };
       }),
-      tap(console.log),
     );
-  }
-
-  /**
-   * Assigns to each line the value of its currency and total.
-   * @param lines - Potfolio lines.
-   * @param currencies - Coins with their corresponding value.
-   */
-  private mapToPortfolioLineData(lines: PortfolioLineWithCoin[], currencies: any): PortfolioLineData[] {
-    return lines.map((line) => {
-      const currencyValue = currencies[line.coin.acronym] ? currencies[line.coin.acronym][this.currencyToShow] : undefined;
-      const totalValue = currencyValue * line.amount;
-
-      return <PortfolioLineData> {
-        ...line,
-        coin: <CoinWithValue> {
-          ...line.coin,
-          value: currencyValue,
-        },
-        totalValue: currencyValue ? totalValue : undefined,
-      };
-    });
   }
 
   /**
@@ -181,5 +160,40 @@ export class PortfolioDetailsComponent implements OnInit {
     deleteLineModalRef.result.then(() => {
       this.actions.next(portfolio.id);
     }, noop);
+  }
+
+  /**
+   * Assigns to each line the value of its currency and total.
+   * @param lines - Potfolio lines.
+   * @param currencies - Coins with their corresponding value.
+   */
+  private mapToPortfolioLineData(lines: PortfolioLineWithCoin[], currencies: any): PortfolioLineData[] {
+    return lines.map((line) => {
+      const currencyValue = currencies[line.coin.acronym] ? currencies[line.coin.acronym][this.currencyToShow] : undefined;
+      const totalValue = currencyValue * line.amount;
+
+      return <PortfolioLineData> {
+        ...line,
+        coin: <CoinWithValue> {
+          ...line.coin,
+          value: currencyValue,
+        },
+        totalValue: currencyValue ? totalValue : undefined,
+      };
+    });
+  }
+
+  /**
+   * Calculates the portfolio total value.
+   * @param lines 
+   */
+  private calculatePortfolioValue(lines: PortfolioLineData[]): number {
+    var value = 0;
+
+    lines.forEach((line) => {
+      value = value + (line.totalValue ?? 0);
+    });
+
+    return value;
   }
 }

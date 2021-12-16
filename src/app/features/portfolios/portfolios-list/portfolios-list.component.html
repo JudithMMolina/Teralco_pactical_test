@@ -11,15 +11,12 @@
 <div class="row">
   <div class="col-12 col-md-6" *ngFor="let portfolio of portfolios$ | async">
     <a href="javascript:;" class="card list-group-item list-group-item-action clearfix portfolio-card" [routerLink]="['/portfolios/', portfolio.id]">
-      <div class="d-flex justify-content-between align-items-center portfolio-header">
+      <div class="portfolio-header">
         <p class="list-group-item-heading text-truncate portfolio-name mb-0">{{ portfolio.name }}</p>
-        <label class="portfolio-id ml-3 mb-0">#{{ portfolio.id }}</label>
       </div>
-      <div class="row align-items-center">
+      <div class="row">
         <div class="col-12">
-          <p class="mb-0 total-lines">
-            Portfolio lines: {{ portfolio.lines.length }}
-          </p>
+          <p class="portfolio-id mb-0">#{{ portfolio.id }}</p>
         </div>
       </div>
     </a>
