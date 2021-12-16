@@ -43,7 +43,7 @@ export class CreatePortfolioModalComponent {
     this.creating = true;
 
     this.portfolioService
-      .createPorfolio(formValues)
+      .createPortfolio(formValues)
       .pipe(
         take(1),
         finalize(() => (this.creating = false))

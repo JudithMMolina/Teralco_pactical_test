@@ -6,12 +6,17 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="currencyForm" (ngSubmit)="editCurrency(currency.id, currencyForm.value)">
+    <form *ngIf="currencyForm" [formGroup]="currencyForm" (ngSubmit)="editCurrency(currency.id, currencyForm.value)">
       <div class="form-group" *ngIf="currencyForm.controls.acronym as acronym">
         <label for="acronym">Acronym <span placement="right" ngbTooltip="Required field">*</span></label>
-        <input type="text" formControlName="acronym" class="form-control" id="acronym" placeholder="Enter acronym">
-        <div *ngIf="acronym.invalid && (acronym.dirty || acronym.touched) && acronym.errors?.required">
-          <small class="ml-2 text-danger">Acronym is required</small>
+        <input type="text" autocomplete="off" formControlName="acronym" class="form-control" id="acronym" placeholder="Enter acronym">
+        <div *ngIf="acronym.invalid && (acronym.dirty || acronym.touched)">
+          <div *ngIf="acronym.errors?.required">
+            <small class="ml-2 text-danger">Acronym is required</small>
+          </div>
+          <div *ngIf="acronym.errors?.invalidAcronym">
+            <small class="ml-2 text-danger">There is no currency with this acronym</small>
+          </div>
         </div>
       </div>
       <div class="form-group" *ngIf="currencyForm.controls.name as name">
@@ -33,5 +38,11 @@
         </button>
       </div>
     </form>
+  </div>
+
+  <div *ngIf="!currencyForm" class="d-flex justify-content-center my-5">
+    <div class="spinner-border text-primary">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </ng-container>

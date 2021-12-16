@@ -55,7 +55,7 @@ export class EditPortfolioModalComponent implements OnInit {
     this.editing = true;
 
     this.portfolioService
-      .editPorfolio(id, formValues)
+      .editPortfolio(id, formValues)
       .pipe(
         take(1),
         finalize(() => (this.editing = false))
