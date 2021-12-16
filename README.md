@@ -1,5 +1,7 @@
 # Practical test
 
+**Proyecto creado por Judith Mula Molina (judith.mm1803@gmail.com)**
+
 <small>No se han puesto las tíldes a los títulos para que funcionase el enlace del índice. Soy consciente de que de haberlo hecho en inglés no existiría este problema pero debido a mi tiempo y dificultad con el idioma he preferido hacer este documento en español.</small>
 
 **Índice**
