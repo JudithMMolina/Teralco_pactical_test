@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CurrencyRequest } from '../models/currency-request.model';
 import { Currency } from '../models/currency.model';
 
 @Injectable({
@@ -30,7 +31,7 @@ export class CurrencyService {
    * @param currency - Data required for creation.
    * @returns 
    */
-  public createCurrency(currency: any): Observable<any> {
+  public createCurrency(currency: CurrencyRequest): Observable<any> {
     return this.http.post<any>('http://localhost:3000/coins', currency);
   }
 
@@ -39,7 +40,7 @@ export class CurrencyService {
    * @param id - Currency identifier.
    * @param currency - Data required for edition.
    */
-  public editCurrency(id: number, currency: Currency): Observable<any> {
+  public editCurrency(id: number, currency: CurrencyRequest): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/coins/${id}`, currency);
   }
 
@@ -49,5 +50,18 @@ export class CurrencyService {
    */
   public deleteCurrency(id: number): Observable<any> {
     return this.http.delete<any>(`http://localhost:3000/coins/${id}`);
+  }
+  
+  /**
+   * Gets currency values.
+   * @param currencies - Acronyms of the currencies from which we want to obtain their value.
+   * @param toCurrency - To the currency for which the value is to be known.
+   */
+  public getCurrencyValues(currencies: string[], toCurrency: string): Observable<any> {
+    var params = new HttpParams();
+    params = params.append('fsyms', currencies.join(','));
+    params = params.append('tsyms', toCurrency);
+
+    return this.http.get<any>('https://min-api.cryptocompare.com/data/pricemulti', { params });
   }
 }

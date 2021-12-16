@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { PortfolioLine } from 'src/app/features/portfolios/models/portfolio-lines.model';
+import { PortfolioLineWithCoin } from 'src/app/core/models/portfolio-line-with-coin.model';
+import { PortfolioLineRequest } from '../models/portfolio-line-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class PortfolioLineService {
    * Gets the lines of a portfolio.
    * @param id - Portfolio identifier.
    */
-  public getPortfolioLines(id: number): Observable<PortfolioLine[]> {
-    return this.http.get<PortfolioLine[]>(`http://localhost:3000/portfolios/${id}/lines?_expand=coin`);
+  public getPortfolioLines(id: number): Observable<PortfolioLineWithCoin[]> {
+    return this.http.get<PortfolioLineWithCoin[]>(`http://localhost:3000/portfolios/${id}/lines?_expand=coin`);
   }
 
   /**
@@ -28,7 +29,7 @@ export class PortfolioLineService {
    * @param line - Data required for creation.
    * @returns 
    */
-  public createLine(portfolioId: number, line: any): Observable<any> {
+  public createLine(portfolioId: number, line: PortfolioLineRequest): Observable<any> {
     return this.http.post<any>(`http://localhost:3000/portfolios/${portfolioId}/lines`, line);
   }
 
@@ -38,7 +39,7 @@ export class PortfolioLineService {
    * @param line - Data required for edition.
    * @returns 
    */
-  public editLine(lineId: number, line: any): Observable<any> {
+  public editLine(lineId: number, line: PortfolioLineRequest): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/lines/${lineId}`, line);
   }
 

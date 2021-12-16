@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { noop, Observable, ReplaySubject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 
 import { Portfolio } from 'src/app/core/models/portfolio.model';
 import { PortfolioService } from 'src/app/core/services/portfolio.service';
