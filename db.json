@@ -68,12 +68,12 @@
   ],
   "portfolios": [
     {
-      "id": 1,
-      "name": "Portfolio 1 portfolio con nombre bastante mas largo"
+      "name": "Portfolio 1",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Portfolio 2 portfolio con nombre bastante mas largo portfolio con nombre bastante mas largo"
+      "name": "Portfolio 2",
+      "id": 2
     },
     {
       "id": 3,
@@ -98,10 +98,10 @@
   ],
   "lines": [
     {
-      "id": 1,
       "portfolioId": 1,
       "coinId": 1,
-      "amount": 1.5
+      "amount": 1.6,
+      "id": 1
     },
     {
       "id": 2,
