@@ -4,7 +4,7 @@
   </p>
   <div class="d-flex justify-content-between mt-4">
     <button type="submit" class="btn btn-light min-w-btn mt-2" (click)="activeModal.dismiss()">Close</button>
-    <button type="submit" class="btn btn-danger min-w-btn mt-2" (click)="deleteCurrency(portfolio.id)">
+    <button type="submit" class="btn btn-danger min-w-btn mt-2" (click)="deletePortfolio(portfolio.id)">
       <ng-container *ngIf="!deleting">
         Delete
       </ng-container>

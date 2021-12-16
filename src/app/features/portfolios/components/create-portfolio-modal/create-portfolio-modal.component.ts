@@ -9,7 +9,7 @@ import { PortfolioService } from 'src/app/core/services/portfolio.service';
   templateUrl: './create-portfolio-modal.component.html',
   styleUrls: ['./create-portfolio-modal.component.scss'],
 })
-export class CreatePortfolioComponent {
+export class CreatePortfolioModalComponent {
   /**
    * Creation form.
    */
@@ -40,7 +40,6 @@ export class CreatePortfolioComponent {
    * @param formValues - Form values.
    */
   createPortfolio(formValues: any) {
-    console.log(formValues);
     this.creating = true;
 
     this.portfolioService

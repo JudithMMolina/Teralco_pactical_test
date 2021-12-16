@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { noop, Observable, ReplaySubject } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 import { Portfolio } from 'src/app/core/models/portfolio.model';
 import { PortfolioService } from 'src/app/core/services/portfolio.service';
-import { CreatePortfolioComponent } from '../create-portfolio-modal/create-portfolio-modal.component';
-import { DeletePortfolioModalComponent } from '../delete-portfolio-modal/delete-portfolio-modal.component';
-import { EditPortfolioModalComponent } from '../edit-portfolio-modal/edit-portfolio-modal.component';
+import { CreatePortfolioModalComponent } from '../components/create-portfolio-modal/create-portfolio-modal.component';
+import { DeletePortfolioModalComponent } from '../components/delete-portfolio-modal/delete-portfolio-modal.component';
+import { EditPortfolioModalComponent } from '../components/edit-portfolio-modal/edit-portfolio-modal.component';
 
 @Component({
   selector: 'app-portfolios-list',
@@ -38,7 +38,6 @@ export class PortfoliosListComponent implements OnInit {
   ngOnInit(): void {
     this.portfolios$ = this.actions$.pipe(
       switchMap(() => this.portfolioService.getPorfolios()),
-      tap(console.log),
     );
 
     this.actions.next(true);
@@ -48,7 +47,7 @@ export class PortfoliosListComponent implements OnInit {
    * Creates a portfolio in a modal.
    */
   createPortfolio() {
-    const createPortfolioModalRef = this.modalService.open(CreatePortfolioComponent, {
+    const createPortfolioModalRef = this.modalService.open(CreatePortfolioModalComponent, {
       centered: true,
     });
 

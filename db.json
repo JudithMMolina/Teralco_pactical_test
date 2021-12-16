@@ -142,6 +142,30 @@
       "portfolioId": 3,
       "coinId": 10,
       "amount": 10
+    },
+    {
+      "portfolioId": "3",
+      "coinId": "9",
+      "amount": 2.2,
+      "id": 10
+    },
+    {
+      "portfolioId": "3",
+      "coinId": "10",
+      "amount": 5,
+      "id": 11
+    },
+    {
+      "portfolioId": "2",
+      "coinId": "10",
+      "amount": 0.15,
+      "id": 12
+    },
+    {
+      "portfolioId": "6",
+      "coinId": "4",
+      "amount": 56,
+      "id": 13
     }
   ]
 }

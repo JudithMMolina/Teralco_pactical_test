@@ -18,23 +18,23 @@ export class DeletePortfolioModalComponent {
   /**
    * Flag indicating if a portfolio is being deleting.
    */
-  public deleting;
+  public deleting = false;
 
   /**
    * Declares the dependencies.
+   * @param activeModal - The active modal.
+   * @param - Portfolio service.
    */
   constructor(
     public activeModal: NgbActiveModal,
     private portfolioService: PortfolioService
-  ) {
-    this.deleting = false;
-  }
+  ) { }
 
   /**
-   * Deletes a currency.
-   * @param id - Identifier.
+   * Deletes the portfolio.
+   * @param id - Portfolio identifier.
    */
-  deleteCurrency(id: number): void {
+   deletePortfolio(id: number): void {
     this.deleting = true;
 
     this.portfolioService

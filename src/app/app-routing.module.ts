@@ -7,10 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./features/portfolios/portfolios.module').then(m => m.PortfoliosModule),
   },
   {
-    path: 'portfolio-lines',
-    loadChildren: () => import('./features/lines/lines.module').then(m => m.LinesModule),
-  },
-  {
     path: 'currencies',
     loadChildren: () => import('./features/currencies/currencies.module').then(m => m.CurrenciesModule),
   },

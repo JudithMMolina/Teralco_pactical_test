@@ -18,18 +18,21 @@ export class DeleteCurrencyModalComponent {
   /**
    * Flag indicating if a currency is being deleting.
    */
-  public deleting;
+  public deleting = false;
 
+  /**
+   * Declares the dependencies.
+   * @param activeModal - The active modal.
+   * @param currencyService - Currency service.
+   */
   constructor(
     public activeModal: NgbActiveModal,
     private currencyService: CurrencyService
-  ) {
-    this.deleting = false;
-  }
+  ) { }
 
   /**
-   * Deletes a currency.
-   * @param id - Identifier.
+   * Deletes the currency.
+   * @param id - Currency identifier.
    */
   deleteCurrency(id: number): void {
     this.deleting = true;

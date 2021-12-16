@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { forkJoin, noop, Observable, ReplaySubject } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+
 import { Portfolio } from 'src/app/core/models/portfolio.model';
+import { PortfolioLineService } from 'src/app/core/services/portfolio-line.service';
 import { PortfolioService } from 'src/app/core/services/portfolio.service';
+import { CreateLineModalComponent } from '../components/create-line-modal/create-line-modal.component';
+import { DeleteLineModalComponent } from '../components/delete-line-modal/delete-line-modal.component';
+import { EditLineModalComponent } from '../components/edit-line-modal/edit-line-modal.component';
 import { PortfolioLine } from '../models/portfolio-lines.model';
 
 export interface ViewModel {
@@ -18,51 +23,55 @@ export interface ViewModel {
   styleUrls: ['./portfolio-details.component.scss'],
 })
 export class PortfolioDetailsComponent implements OnInit {
-  public portfolioId: number | undefined;
-
   /**
    * Portfolio details data.
    */
   public viewModel$: Observable<ViewModel> | undefined;
 
   /**
-   * Creation line form.
+   * The actions dispatcher.
    */
-  public lineForm = this.formBuilder.group({
-    currency: ['', Validators.required],
-    amount: ['', Validators.required, Validators.min(0.01)],
-  });
+  private actions: ReplaySubject<number> = new ReplaySubject<number>(1);
 
-  public creating = false;
+  /**
+   * The actions observable.
+   */
+  private actions$ = this.actions.asObservable();
 
   /**
    * Declares the dependencies.
    * @param activatedRoute - Activated route.
-   * @param portfolioService - Portfolio service.
+   * @param modalService - ng-bootstrap modal service.
+   * @param portfolioService - Portfolio line service.
+   * @param portfolioLineService - Portfolio service.
    */
   constructor(
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private portfolioService: PortfolioService
+    private modalService: NgbModal,
+    private portfolioService: PortfolioService,
+    private portfolioLineService: PortfolioLineService
   ) {}
 
   ngOnInit(): void {
-    this.portfolioId = this.activatedRoute.snapshot.params?.id;
+    const portfolioId = this.activatedRoute.snapshot.params?.id;
 
-    if (this.portfolioId) {
-      this.getPortfolio(this.portfolioId);
+    if (portfolioId) {
+      this.getViewModel();
+      this.actions.next(portfolioId);
     }
   }
 
   /**
    * Gets the portfolio information.
-   * @param id - Portfolio identifier.
    */
-  getPortfolio(id: number) {
-    this.viewModel$ = forkJoin([
-      this.portfolioService.getPorfolio(id),
-      this.portfolioService.getPorfolioLines(id),
-    ]).pipe(
+  getViewModel() {
+    this.viewModel$ = this.actions$.pipe(
+      switchMap((portfolioId: number) => {
+        return forkJoin([
+          this.portfolioService.getPorfolio(portfolioId),
+          this.portfolioLineService.getPorfolioLines(portfolioId),
+        ]);
+      }),
       map(([portfolio, lines]) => {
         return <ViewModel>{
           portfolio,
@@ -70,9 +79,64 @@ export class PortfolioDetailsComponent implements OnInit {
         };
       })
     );
-
-    this.viewModel$.subscribe(console.log);
   }
 
-  createLine(): void {}
+  /**
+   * Creates a line.
+   * @param portfolio - Portfolio to which a line is to be added
+   */
+  createLine(portfolio: Portfolio): void {
+    const createLineModalRef = this.modalService.open(
+      CreateLineModalComponent,
+      {
+        centered: true,
+      }
+    );
+
+    createLineModalRef.componentInstance.portfolio = portfolio;
+
+    createLineModalRef.result.then(() => {
+      this.actions.next(portfolio.id);
+    }, noop);
+  }
+
+  /**
+   * Edits the line.
+   * @param portfolio - Portfolio to which the line belongs.
+   * @param line - Portfolio line to edit.
+   */
+  editLine(portfolio: Portfolio, line: PortfolioLine) {
+    const editLineModalRef = this.modalService.open(
+      EditLineModalComponent,
+      {
+        centered: true,
+      }
+    );
+
+    editLineModalRef.componentInstance.line = line;
+
+    editLineModalRef.result.then(() => {
+      this.actions.next(portfolio.id);
+    }, noop);
+  }
+
+  /**
+   * Confirms and deletes the portfolio line.
+   * @param portfolio - Portfolio to which the line belongs.
+   * @param line - The line to delete.
+   */
+  deleteLine(portfolio: Portfolio, line: PortfolioLine): void {
+    const deleteLineModalRef = this.modalService.open(
+      DeleteLineModalComponent,
+      {
+        centered: true,
+      }
+    );
+
+    deleteLineModalRef.componentInstance.line = line;
+
+    deleteLineModalRef.result.then(() => {
+      this.actions.next(portfolio.id);
+    }, noop);
+  }
 }
