@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PortfolioRequest } from '../models/portfolio-request.model';
 
 import { Portfolio } from '../models/portfolio.model';
 
@@ -33,7 +34,7 @@ export class PortfolioService {
    * Creates a portfolio.
    * @param portfolio - Data required for creation.
    */
-  public createPortfolio(portfolio: any): Observable<any> {
+  public createPortfolio(portfolio: PortfolioRequest): Observable<any> {
     return this.http.post<any>('http://localhost:3000/portfolios', portfolio);
   }
 
@@ -42,7 +43,7 @@ export class PortfolioService {
    * @param id - Portfolio identifier.
    * @param portfolio - Data required for edition.
    */
-  public editPortfolio(id: number, portfolio: any): Observable<any> {
+  public editPortfolio(id: number, portfolio: PortfolioRequest): Observable<any> {
     return this.http.put<any>(`http://localhost:3000/portfolios/${id}`, portfolio);
   }
 

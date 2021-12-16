@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { noop, Observable, ReplaySubject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { CurrencyService } from 'src/app/core/services/currency.service';
@@ -24,12 +24,17 @@ export class CurrenciesListComponent implements OnInit {
   /**
    * The actions dispatcher.
    */
-  actions: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
+  public actions: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
   /**
    * The actions observable.
    */
-  actions$ = this.actions.asObservable();
+  public actions$ = this.actions.asObservable();
+
+  /**
+   * Initial loading.
+   */
+  public initialLoading = true;
 
 
   /**
@@ -42,7 +47,8 @@ export class CurrenciesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.currencies$ = this.actions$.pipe(
-      switchMap(() => this.currencyService.getCurrencies())
+      switchMap(() => this.currencyService.getCurrencies()),
+      tap(() => this.initialLoading = false),
     );
 
     this.actions.next(true);
