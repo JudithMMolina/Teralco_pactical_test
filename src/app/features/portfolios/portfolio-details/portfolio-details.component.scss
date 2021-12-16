@@ -1,0 +1,29 @@
+.portfolio-id {
+  font-size: 0.85rem;
+}
+
+.lines-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.line-card {
+  border-radius: 0.25rem;
+
+  .coin-amount {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .amount-label {
+    font-size: 0.65rem;
+  }
+}
+
+.max-w-fit {
+  max-width: fit-content;
+}
+
+.min-w-fit {
+  min-width: fit-content;
+}

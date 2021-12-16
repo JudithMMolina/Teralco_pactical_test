@@ -1,0 +1,36 @@
+
+<div class="modal-header">
+  <h5 class="modal-title" id="modal-basic-title">New currency</h5>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="currencyForm" (ngSubmit)="createCurrency(currencyForm.value)">
+    <div class="form-group" *ngIf="currencyForm.controls.acronym as acronym">
+      <label for="acronym">Acronym <span placement="right" ngbTooltip="Required field">*</span></label>
+      <input type="text" formControlName="acronym" class="form-control" id="acronym" placeholder="Enter acronym">
+      <div *ngIf="acronym.invalid && (acronym.dirty || acronym.touched) && acronym.errors?.required">
+        <small class="ml-2 text-danger">Acronym is required</small>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="currencyForm.controls.name as name">
+      <label for="name">Name <span placement="right" ngbTooltip="Required field">*</span></label>
+      <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter name">
+      <div *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.required">
+        <small class="ml-2 text-danger">Name is required</small>
+      </div>
+    </div>
+    <div class="text-right">
+      <button type="submit" class="btn btn-success min-w-btn mt-2" [disabled]="!currencyForm.valid">
+        <ng-container *ngIf="!creating">
+          Create
+        </ng-container>
+        <ng-container *ngIf="creating">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Creating...
+        </ng-container>
+      </button>
+    </div>
+  </form>
+</div>
