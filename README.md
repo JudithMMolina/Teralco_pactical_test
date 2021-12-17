@@ -142,12 +142,13 @@ Es algo que considero muy importante cuando la web usa llamadas Http, pero para 
 A continuación, listo una serie de características que ayudarían a mejorar la UX del usuario, pero por orden de prioridad y debido a que esto son extras que he listado yo por mi cuenta no se han incluido por el tiempo disponible:
 
 * Alert/Toast de éxito a la hora de crear/editar/borrar entidades.
-* Paginar los listados
-* Incluir filtros en los listados
-* Refactorización en más componentes
+* Paginar los listados.
+* Incluir filtros en los listados.
+* Refactorización en más componentes.
 * Poner una imagen para cuando un *portfolio* no tiene líneas.
 * El *select* con buscador para el acrónimo de la moneda.
 * Spinners de carga en los listados.
+* Multi idioma.
 
 ...
 ## Notas extra
